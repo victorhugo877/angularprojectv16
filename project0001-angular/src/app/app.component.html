@@ -1,0 +1,13 @@
+<ngb-alert [dismissible]="false">
+	<strong>Warning!</strong> Alerta to boostrap
+</ngb-alert>
+
+<p>Hola mundo</p>
+
+<p>Show a self-closing success message that disappears after 5 seconds.</p>
+
+<ng-container *ngIf="successMessage">
+  <ngb-alert #selfClosingAlert type="success" (closed)="successMessage = ''">{{ successMessage }}</ngb-alert>
+</ng-container>
+
+<button class="btn btn-primary" (click)="changeSuccessMessage()">Change message</button>
