@@ -1,0 +1,31 @@
+<ng-container *ngIf="alertShow">
+    <ngb-alert [type]="alertView.type" (closed)="close()">{{ alertView.message }}</ngb-alert>
+</ng-container>
+<h2>Inicia Sesion con tu usuario registrado</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto my-0">
+            <form class="d-grid" [formGroup]="formLogin" (ngSubmit)="save()">
+                <label for="">Usuario</label>
+                <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                >
+                <label for="">Contraseña</label>
+                <input
+                    type="password"
+                    formControlName="password"
+                    placeholder="Contraseña"
+                >
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="!formLogin.valid"
+                >
+                    {{ 'Ingresar' }}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

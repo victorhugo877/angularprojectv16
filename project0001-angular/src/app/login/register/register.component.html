@@ -1,0 +1,46 @@
+<ng-container *ngIf="alertShow">
+    <ngb-alert [type]="alertView.type" (closed)="close()">{{ alertView.message }}</ngb-alert>
+</ng-container>
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto my-0">
+            <form class="d-grid" [formGroup]="formRegister" (ngSubmit)="save()">
+                <label for="">Usuario</label>
+                <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                >
+                <label for="">Contraseña</label>
+                <input
+                    type="password"
+                    formControlName="password"
+                    placeholder="Contraseña"
+                >
+                <label for="">Confirma Contraseña</label>
+                <input
+                    type="password"
+                    formControlName="confirmedPassword"
+                    placeholder="Repita su Contraseña"
+                >
+                <div *ngIf="formRegister.get('confirmedPassword')?.dirty && !samePasswords" class="alert alert-danger">
+                    <div *ngIf="formRegister.get('confirmedPassword')?.dirty && !samePasswords">Las contraseñas deben coincidir</div>
+                </div>
+                <button
+            type="button"
+            class="btn btn-outline-primary mr-2"
+            (click)="toLogin()"
+          >
+            {{ 'Cancelar' }}
+          </button>
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="!formRegister.valid || !samePasswords"
+                >
+                    {{ 'Registarse' }}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/lib/services/login/login.service';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
+})
+export class HeaderComponent {
+
+  constructor(
+    private loginService:LoginService,
+    private router:Router,
+  ){
+
+  }
+  closeSession():void {
+    this.loginService.deletedToken();
+    this.router.navigate(["/login"]);
+  }
+}
