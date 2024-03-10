@@ -1,0 +1,43 @@
+@import '../login/login.component.scss';
+
+.container-task-todo-list {
+    overflow-y: scroll;
+    height: 33vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    border: 2px solid #a6ceaa;;
+    border-radius: 6px;
+    padding: 0 5px;
+    .task-todo-list {
+        display: inline-flex;
+        width: 100%;
+        .task-todo{
+            width: 95%;
+            height: 30px;
+            border: 2px solid #a6ceaa;;
+            border-radius: 6px;
+            text-align: left;
+            padding: 0 16px;
+            margin-top: 10px;
+            display: flex;
+            p {
+                color:black;
+                font-size:16px
+            }
+        }
+        .task-todo-close {
+            width:25%;
+            margin-top:5px;
+            color:red;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+    }
+}
+.btn-remove{
+    border: none;
+    background: none;
+    img{
+        width: 20px;
+    }
+}

@@ -1,1 +1,46 @@
-<p>Compont tdos task</p>
+<div class="contenedor">
+  <div class="container-app-todo">
+      <div class="header-app">
+          <img class="header-app-img" src="../../assets/img/cat.svg" alt="">
+      </div>
+      <div class="body-app">
+          <div class="body-app-title-container">
+              <p class="body-app-title">To Do Lista</p>
+          </div>
+
+          <mat-form-field class="example-form-field" appearance="fill">
+              <form [formGroup]="nameTaskTodo">
+                  <input 
+                  matInput
+                  type="text"
+                  formControlName="nameTask"
+                  placeholder="Nombre ToDo...">
+              </form>
+              <button class="example-form-field-button btn-add" matSuffix mat-icon-button (click)="addNewTodo()">
+                <img src="../../assets/icons/add.png" alt="">
+              </button>
+          </mat-form-field>
+          <div class="body-app-title-container">
+              <p class="body-app-title">{{ optionSelected }}</p>
+          </div>
+          <div class="container-task-todo-list">
+              <ng-container *ngIf="isDataTodo; else notData">
+                  <div class="task-todo-list" *ngFor="let item of listTodo; let i = index; trackBy: trackById">
+                      <div class="task-todo">
+                          <p>{{ item.nombre }}</p>
+                          <input class="task-todo-check" [(ngModel)]="item.terminada" (change)="cambiarEstadoDeTarea()" type="checkbox">
+                      </div> 
+                      <div class="task-todo-close">
+                          <button class="example-form-field-button btn-remove" matSuffix mat-icon-button (click)="confirmBox(i)">
+                            <img src="../../assets/icons/remove.png" alt="">
+                          </button>
+                      </div>
+                  </div>
+              </ng-container>
+              <ng-template #notData>
+                  <p> No Data</p>
+              </ng-template>
+          </div>
+      </div>
+  </div>
+</div>

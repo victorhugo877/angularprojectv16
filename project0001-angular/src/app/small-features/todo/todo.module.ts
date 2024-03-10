@@ -6,6 +6,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TodoTaskComponent } from './components/todo-task/todo-task.component'
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     TodoRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
+    MatDividerModule,
+    MatCheckboxModule,
+    FormsModule
   ]
 })
 export class TodoModule { }

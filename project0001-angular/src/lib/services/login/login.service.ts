@@ -33,4 +33,7 @@ export class LoginService {
   deletedToken() {
     this.cookies.delete("token");
   }
+  getUSers(){
+    return this.http.get("https://reqres.in/api/users?page=1");
+  }
 }

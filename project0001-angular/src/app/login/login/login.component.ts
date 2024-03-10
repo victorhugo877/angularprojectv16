@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { Alert } from 'src/lib/models/alert.model';
 import { LoginService } from 'src/lib/services/login/login.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private router: Router,
-    private loginService:LoginService
+    private loginService:LoginService,
+    private spinner: NgxSpinnerService
   ){
     this.initialForm();
   }
@@ -48,6 +50,7 @@ export class LoginComponent {
   }
 
   save():void {
+    this.spinner.show();
     this.formLogin.markAllAsTouched();
     const userRegister = { email: this.formLogin?.value?.email, password: this.formLogin?.value?.password };
     this.loginService.login(userRegister)
@@ -58,6 +61,7 @@ export class LoginComponent {
           type: 'danger',
 		      message: 'Ha ocurrido un error intente de nuevo',
         }
+        this.spinner.hide();
         throw e;
       })
     )
@@ -69,6 +73,7 @@ export class LoginComponent {
       }
       this.loginService.setToken(response?.token);
       this.welcome();
+      this.spinner.hide();
     })
   }
 
@@ -79,5 +84,9 @@ export class LoginComponent {
 
   welcome():void {
     this.router.navigate(["/todo"]);
+  }
+
+  ToRegister(){
+    this.router.navigate(["/login/register"]);
   }
 }

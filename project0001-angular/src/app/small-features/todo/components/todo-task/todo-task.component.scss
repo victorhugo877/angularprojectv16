@@ -1,0 +1,110 @@
+.contenedor {
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+    width:60%
+}
+.container-app-todo{
+    width: 100%;
+    height:530px;
+    margin-top: 70px;
+    border-radius: 10px;
+    transition: none;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2)
+}
+.header-app {
+    height:100px;
+    background-color: cadetblue;
+
+    .header-app-img {
+        width: 100px;
+        height: inherit;
+    }
+}
+.body-app {
+    width:70%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    .body-app-title-container{
+        text-align:left;
+        margin-top:15px;
+        .body-app-title {
+            color:#0d6363;
+            margin:10px 0;
+            font-family:'Courier New', Courier, monospace;
+            font-size: 25px;
+            font-weight: 600;
+        }
+    }
+    .body-app-select {
+        border: 2px solid #a6ceaa;;
+        border-radius: 6px;
+        height: 52px;
+        margin-top:10px;
+        width: 100%;
+    }
+    .example-form-field {
+        border: 2px solid #a6ceaa;;
+        border-radius: 6px;
+        height: 100px;
+        margin-top:10px;
+        width: 100%;
+        .example-form-field-button{
+            cursor: pointer;
+        }
+    }
+    .container-task-todo-list {
+        overflow-y: scroll;
+        height: 41vh;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        border: 2px solid #a6ceaa;;
+        border-radius: 6px;
+        padding: 0 5px;
+        .task-todo-list {
+            display: inline-flex;
+            width: 100%;
+            .task-todo{
+                width: 95%;
+                height: 40px;
+                border: 2px solid #a6ceaa;;
+                border-radius: 6px;
+                text-align: left;
+                padding: 5px 10px;
+                margin-top: 10px;
+                display: flex;
+                p {
+                    color:black;
+                    font-size:16px;
+                    font-family:'Courier New', Courier, monospace;
+                    font-weight: 400;
+                }
+                .task-todo-check{
+                    flex: auto;
+                }
+            }
+            .task-todo-close {
+                width:25%;
+                margin-top:5px;
+                color:red;
+                padding: 8px 0;
+                cursor: pointer;
+            }
+        }
+    }
+    .container-task-todo-list::-webkit-scrollbar {
+        display: none; 
+    }
+}
+.btn-add{
+    border: none;
+}
+.btn-remove{
+    background: none;
+    border: none;
+    img {
+        width: 30px;
+    }
+}

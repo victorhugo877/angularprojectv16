@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { Alert } from 'src/lib/models/alert.model';
 import { LoginService } from 'src/lib/services/login/login.service';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-register',
@@ -19,17 +21,21 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     type: "Sucess",
     message: "Usuarios registrado de manera Exitosa!!"
   }
+  emailValid:any=[]
 
   constructor(
     private changeDetector: ChangeDetectorRef,
     private router: Router,
-    private loginService:LoginService
+    private loginService:LoginService,
+    private clipboard: Clipboard,
+    private spinner: NgxSpinnerService
   ){
     this.initialForm();
   }
 
   ngOnInit() {
-    
+    this.spinner.show();
+    this.getUsersToRegister()
   }
 
   ngAfterViewInit(): void {
@@ -61,6 +67,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   save():void {
+    this.spinner.show();
     this.formRegister.markAllAsTouched();
     const userRegister = { email: this.formRegister?.value?.email, password: this.formRegister?.value?.password };
     this.loginService.register(userRegister)
@@ -71,6 +78,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
           type: 'danger',
 		      message: 'Ha ocurrido un error en el registro',
         }
+        this.spinner.hide();
         throw e;
       })
     )
@@ -80,6 +88,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         type: 'success',
         message: "Usuarios registrado de manera Exitosa!!"
       }
+      this.spinner.hide();
       this.toLogin();
     })
   }
@@ -90,5 +99,27 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   close():void {
     this.alertShow=false;
+  }
+
+  getUsersToRegister():void {
+  this.loginService.getUSers()
+    .pipe(
+      catchError((e) => {
+        this.alertShow=true;
+        this.alertView = {
+          type: 'danger',
+		      message: 'Ha ocurrido un error No es posible registrase, intentelo mas tarde',
+        }
+        throw e;
+      })
+    )
+    .subscribe((r:any) => {
+      this.emailValid = r?.data;
+      this.spinner.hide();
+    })
+  }
+
+  copy(textCopy:string) {
+    this.clipboard.copy(textCopy);
   }
 }

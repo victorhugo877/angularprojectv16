@@ -1,23 +1,29 @@
 <ng-container *ngIf="alertShow">
     <ngb-alert [type]="alertView.type" (closed)="close()">{{ alertView.message }}</ngb-alert>
 </ng-container>
-<div class="container">
-    <div class="row">
+<div class="title-login">
+    <p>Registrese con unos de los correo que se muestran</p>
+</div>
+<div class="container contenedor">
+    <div class="container-app-todo">
+        <div class="header-app">
+            <img class="header-app-img" src="../../assets/img/cat.svg" alt="">
+        </div>
         <div class="col-6 mx-auto my-0">
             <form class="d-grid" [formGroup]="formRegister" (ngSubmit)="save()">
-                <label for="">Usuario</label>
+                <label class="user-login">Usuario</label>
                 <input
                     type="email"
                     formControlName="email"
                     placeholder="Email"
                 >
-                <label for="">Contraseña</label>
+                <label class="user-login">Contraseña</label>
                 <input
                     type="password"
                     formControlName="password"
                     placeholder="Contraseña"
                 >
-                <label for="">Confirma Contraseña</label>
+                <label class="user-login">Confirma Contraseña</label>
                 <input
                     type="password"
                     formControlName="confirmedPassword"
@@ -26,21 +32,44 @@
                 <div *ngIf="formRegister.get('confirmedPassword')?.dirty && !samePasswords" class="alert alert-danger">
                     <div *ngIf="formRegister.get('confirmedPassword')?.dirty && !samePasswords">Las contraseñas deben coincidir</div>
                 </div>
-                <button
-            type="button"
-            class="btn btn-outline-primary mr-2"
-            (click)="toLogin()"
-          >
-            {{ 'Cancelar' }}
-          </button>
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    [disabled]="!formRegister.valid || !samePasswords"
-                >
-                    {{ 'Registarse' }}
-                </button>
+                <div class="m-3">
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-login btn-login-primary mx-3"
+                        [disabled]="!formRegister.valid || !samePasswords"
+                    >
+                        {{ 'Registarse' }}
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-light btn-login mx-3"
+                        (click)="toLogin()"
+                    >
+                        {{ 'Cancelar' }}
+                    </button>
+                </div>
             </form>
+        </div>
+        <div class="container-task-todo-list">
+            <div class="task-todo-list" *ngFor="let item of emailValid; let i = index;">
+                <div class="task-todo">
+                    <p>{{ item?.email }}</p>
+                </div> 
+                <div class="task-todo-close">
+                    <button data-toggle="tooltip" data-placement="top" title="Click para Copiar en portapapeles" (click)="copy(item?.email)" class="example-form-field-button btn-remove" matSuffix mat-icon-button>
+                        <img src="../../assets/icons/copy.png" alt="">
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Espere por favor...</p>
+</ngx-spinner>

@@ -1,31 +1,52 @@
 <ng-container *ngIf="alertShow">
     <ngb-alert [type]="alertView.type" (closed)="close()">{{ alertView.message }}</ngb-alert>
 </ng-container>
-<h2>Inicia Sesion con tu usuario registrado</h2>
-<div class="container">
-    <div class="row">
+<div class="title-login">
+    <p>Inicia Sesion con tu usuario registrado</p>
+</div>
+<div class="container contenedor">
+    <div class="container-app-todo">
+        <div class="header-app">
+            <img class="header-app-img" src="../../assets/img/cat.svg" alt="">
+        </div>
         <div class="col-6 mx-auto my-0">
             <form class="d-grid" [formGroup]="formLogin" (ngSubmit)="save()">
-                <label for="">Usuario</label>
+                <label class="user-login">Usuario</label>
                 <input
                     type="email"
                     formControlName="email"
                     placeholder="Email"
                 >
-                <label for="">Contraseña</label>
+                <label class="user-login">Contraseña</label>
                 <input
                     type="password"
                     formControlName="password"
                     placeholder="Contraseña"
                 >
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                    [disabled]="!formLogin.valid"
-                >
-                    {{ 'Ingresar' }}
-                </button>
+                <div class="m-3">
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-login btn-login-primary mx-3"
+                        [disabled]="!formLogin.valid"
+                    >
+                        {{ 'Ingresar' }}
+                    </button>
+                    <button type="button"
+                        class="btn btn-light btn-login mx-3"
+                        (click)="ToRegister()"
+                    >
+                        {{ 'Registarse' }}
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 </div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Iniciando Sesion...</p>
+</ngx-spinner>

@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { ReactiveFormsModule }   from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    NgbAlertModule
+    NgbAlertModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
   ]
 })
 export class LoginModule { }
