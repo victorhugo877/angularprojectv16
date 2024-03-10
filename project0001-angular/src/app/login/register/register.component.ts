@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.alertShow=true;
         this.alertView = {
           type: 'danger',
-		      message: 'Ha ocurrido un error en el registro',
+		      message: 'Ha ocurrido un error en el registro, use uno de los correos que aparecen en la parte inferior, solo darle click al icono copy',
         }
         this.spinner.hide();
         throw e;

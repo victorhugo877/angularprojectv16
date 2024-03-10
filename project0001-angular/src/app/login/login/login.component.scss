@@ -17,7 +17,7 @@
 }
 .container-app-todo{
     width: 100%;
-    height:530px;
+    height:600px;
     border-radius: 10px;
     transition: none;
     transform-style: preserve-3d;
@@ -42,4 +42,9 @@
 }
 .btn-login-primary{
     background-color: cadetblue;
+}
+.to-register{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 10px;
+    font-weight: 400;
 }

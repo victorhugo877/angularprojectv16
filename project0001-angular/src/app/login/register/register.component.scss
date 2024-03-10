@@ -13,7 +13,7 @@
         width: 100%;
         .task-todo{
             width: 95%;
-            height: 30px;
+            height: 25px;
             border: 2px solid #a6ceaa;;
             border-radius: 6px;
             text-align: left;
@@ -29,7 +29,7 @@
             width:25%;
             margin-top:5px;
             color:red;
-            padding: 8px 0;
+            padding:0;
             cursor: pointer;
         }
     }
@@ -40,4 +40,9 @@
     img{
         width: 20px;
     }
+}
+.to-register{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 10px;
+    font-weight: 400;
 }

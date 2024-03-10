@@ -59,7 +59,7 @@ export class LoginComponent {
         this.alertShow=true;
         this.alertView = {
           type: 'danger',
-		      message: 'Ha ocurrido un error intente de nuevo',
+		      message: 'Ha ocurrido un error intente de nuevo, puede que el usuario no este registrardo',
         }
         this.spinner.hide();
         throw e;

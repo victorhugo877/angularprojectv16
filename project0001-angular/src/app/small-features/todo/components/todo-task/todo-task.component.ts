@@ -32,12 +32,18 @@ export class TodoTaskComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
   addNewTodo():void {
-    const nuevaTarea = new TareaPendiente(this.nameTaskTodo.value.nameTask as string);
-    this.listTodo.push(nuevaTarea);
-    this.todoService.guardarTareas(this.listTodo);
-    this.alertWithSuccess();
-    this.getTask();
-    this.nameTaskTodo.controls.nameTask.setValue('');
+    if(this.nameTaskTodo.value.nameTask?.trim() !== ''){
+      const nuevaTarea = new TareaPendiente(this.nameTaskTodo.value.nameTask as string);
+      this.listTodo.push(nuevaTarea);
+      this.todoService.guardarTareas(this.listTodo);
+      this.alertWithSuccess();
+      this.getTask();
+      this.nameTaskTodo.controls.nameTask.setValue('');
+    } else {
+      Swal.fire('ERROR', 'La tarea debe tener un nombre, no se peude crear vacia', 'error');
+      this.nameTaskTodo.controls.nameTask.setValue('');
+    }
+    
   
     this.changeDetectorRef.detectChanges();
   }
