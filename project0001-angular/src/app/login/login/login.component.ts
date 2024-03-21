@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Alert } from 'src/lib/models/alert.model';
 import { LoginService } from 'src/lib/services/login/login.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { AppFacade } from 'src/app/+state/app.facade'
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent {
     private changeDetector: ChangeDetectorRef,
     private router: Router,
     private loginService:LoginService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    readonly appFacade:AppFacade
   ){
     this.initialForm();
   }
@@ -72,6 +74,7 @@ export class LoginComponent {
         message: "Bienvenido Usuario Logueado de manera Exitosa!!"
       }
       this.loginService.setToken(response?.token);
+      this.appFacade.setTokenSession(response?.token)
       this.welcome();
       this.spinner.hide();
     })

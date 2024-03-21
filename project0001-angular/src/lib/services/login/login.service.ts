@@ -4,11 +4,14 @@ import { Observable } from "rxjs";
 import { Register } from 'src/lib/models/register.model';
 import { CookieService } from "ngx-cookie-service";
 import { Login } from 'src/lib/models/login.model';
+import { environment } from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  apiEnv = environment;
 
   constructor(
     private http: HttpClient,
@@ -16,11 +19,11 @@ export class LoginService {
   ) { }
 
   register(userRegister: Register): Observable<any> {
-    return this.http.post("https://reqres.in/api/register", userRegister);
+    return this.http.post(`${this.apiEnv.loginApi}/register`, userRegister);
   }
 
   login(userLogin: Login): Observable<any> {
-    return this.http.post("https://reqres.in/api/login", userLogin);
+    return this.http.post(`${this.apiEnv.loginApi}/login`, userLogin);
   }
 
   setToken(token: string) {
@@ -34,6 +37,6 @@ export class LoginService {
     this.cookies.delete("token");
   }
   getUSers(){
-    return this.http.get("https://reqres.in/api/users?page=1");
+    return this.http.get(`${this.apiEnv.loginApi}/users?page=1`);
   }
 }

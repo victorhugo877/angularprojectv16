@@ -27,6 +27,9 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    @media (max-width: 390px) {
+        width: 90%;
+    }
     .body-app-title-container{
         text-align:left;
         margin-top:15px;
@@ -36,6 +39,9 @@
             font-family:'Courier New', Courier, monospace;
             font-size: 25px;
             font-weight: 600;
+            @media (max-width: 390px) {
+                font-size: 16px;
+            }
         }
     }
     .body-app-select {
@@ -51,6 +57,11 @@
         height: 100px;
         margin-top:10px;
         width: 100%;
+        input[type="text"]::placeholder{
+            @media (max-width: 390px) {
+                font-size: 12px;
+            }
+        }
         .example-form-field-button{
             cursor: pointer;
         }
@@ -80,6 +91,9 @@
                     font-size:16px;
                     font-family:'Courier New', Courier, monospace;
                     font-weight: 400;
+                    @media (max-width: 390px) {
+                        font-size:11px;
+                    }
                 }
                 .task-todo-check{
                     flex: auto;
@@ -106,5 +120,16 @@
     border: none;
     img {
         width: 30px;
+        @media (max-width: 390px) {
+            width: 25px;
+        }
+    }
+}
+.icon__add {
+    width: 48px;
+    height: 48px;
+    @media (max-width: 390px) {
+        width: 25px;
+        height: 25px;
     }
 }

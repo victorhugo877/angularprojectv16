@@ -9,10 +9,11 @@
         <div class="header-app">
             <img class="header-app-img" src="../../assets/img/cat.svg" alt="">
         </div>
-        <div class="col-6 mx-auto my-0">
+        <div class="col-md-6 col-10 mx-auto my-0">
             <form class="d-grid" [formGroup]="formLogin" (ngSubmit)="save()">
                 <label class="user-login">Usuario</label>
                 <input
+                    class="user-login_email"
                     type="email"
                     formControlName="email"
                     placeholder="Email"
@@ -23,16 +24,16 @@
                     formControlName="password"
                     placeholder="Contraseña"
                 >
-                <div class="m-3">
+                <div class="m-md-3 m-0 section-btns">
                     <button
                         type="submit"
-                        class="btn btn-primary btn-login btn-login-primary mx-3"
+                        class="btn btn-primary btn-login btn-login-primary mx-md-3 mx-0"
                         [disabled]="!formLogin.valid"
                     >
                         {{ 'Ingresar' }}
                     </button>
                     <button type="button"
-                        class="btn btn-light btn-login mx-3"
+                        class="btn btn-light btn-login mx-md-3 mx-0"
                         (click)="ToRegister()"
                     >
                         {{ 'Registarse' }}

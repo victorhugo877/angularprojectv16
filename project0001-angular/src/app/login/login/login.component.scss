@@ -26,20 +26,49 @@
 .header-app {
     height:100px;
     background-color: cadetblue;
-
+    @media (max-width: 390px) {
+        height: 60px;
+    }
     .header-app-img {
         width: 100px;
         height: inherit;
+        @media (max-width: 390px) {
+            width: 40px;
+        }
     }
 }
 .user-login{
     font-family:'Courier New', Courier, monospace;
     font-size: 18px;
     font-weight: 600;
+    @media (max-width: 390px) {
+        font-size: 12px;
+    }
 }
+input[type="email"],
+input[type="password"]{
+    @media (max-width: 390px) {
+        width: 100%;
+        font-size: 12px;
+    }
+}
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    @media (max-width: 390px) {
+        font-size: 12px;
+    }
+  }
 .btn-login{
     width: 125px;
+    @media (max-width: 390px) {
+        width: 85%;
+    }
 }
+.btn-login:last-child {
+    @media (max-width: 390px) {
+        margin-top: 8px;
+    }
+  }
 .btn-login-primary{
     background-color: cadetblue;
 }
@@ -47,4 +76,9 @@
     font-family:'Courier New', Courier, monospace;
     font-size: 10px;
     font-weight: 400;
+}
+.section-btns{
+    @media (max-width: 390px) {
+        padding: 1.5rem 0;
+    }
 }

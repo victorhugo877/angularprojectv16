@@ -9,7 +9,7 @@
         <div class="header-app">
             <img class="header-app-img" src="../../assets/img/cat.svg" alt="">
         </div>
-        <div class="col-6 mx-auto my-0">
+        <div class="col-md-6 col-10 mx-auto my-0">
             <form class="d-grid" [formGroup]="formRegister" (ngSubmit)="save()">
                 <label class="user-login">Usuario</label>
                 <input
@@ -32,7 +32,7 @@
                 <div *ngIf="formRegister.get('confirmedPassword')?.dirty && !samePasswords" class="alert alert-danger">
                     <div *ngIf="formRegister.get('confirmedPassword')?.dirty && !samePasswords">Las contraseñas deben coincidir</div>
                 </div>
-                <div class="m-3">
+                <div class="m-md-3 m-0 section-btns">
                     <button
                         type="submit"
                         class="btn btn-primary btn-login btn-login-primary mx-3"
