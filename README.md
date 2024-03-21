@@ -7,3 +7,6 @@ y la version de npm sea >= 8.19.3
 
 Puede ver un demo en la url:
 https://65edfe4b4ab57095e0156e36--starlit-macaron-4f1895.netlify.app
+
+
+LA vista solo esta adaptada a desktop
